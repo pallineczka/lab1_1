@@ -16,10 +16,6 @@ public class Product {
 
     private String type;
 
-    public Product(String id, BigDecimal price, String name, Date snapshotDate, String type){
-        this(id, price, name, snapshotDate, type);
-    }
-
     public Product(String id, BigDecimal price, String name, Date snapshotDate, String type) {
         this.id = id;
         this.price = price;
