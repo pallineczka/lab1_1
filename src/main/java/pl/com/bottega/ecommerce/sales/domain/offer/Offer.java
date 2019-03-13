@@ -5,6 +5,8 @@ import java.util.List;
 
 public class Offer {
 
+    private Product product;
+
     private List<OfferItem> availableItems = new ArrayList<OfferItem>();
 
     private List<OfferItem> unavailableItems = new ArrayList<OfferItem>();
@@ -65,7 +67,7 @@ public class Offer {
         }
 
         for (OfferItem item : availableItems) {
-            OfferItem sameItem = seenOffer.findItem(item.getProductId());
+            OfferItem sameItem = seenOffer.findItem(product.getId());
             if (sameItem == null) {
                 return false;
             }
@@ -77,9 +79,9 @@ public class Offer {
         return true;
     }
 
-    private OfferItem findItem(String productId) {
+    private OfferItem findItem(String id) {
         for (OfferItem item : availableItems) {
-            if (item.getProductId().equals(productId)) {
+            if (product.getId().equals(id)) {
                 return item;
             }
         }

@@ -6,10 +6,13 @@ import java.util.Objects;
 
 public class Discount {
 
+    private Money money;
+
     private String cause;
 
-    public Discount(String cause) {
+    public Discount(String cause, Money money) {
         this.cause = cause;
+        this.money = new Money(Money.getValue(), Money.getCurrency());
     }
 
     public String getCause() {
@@ -18,6 +21,14 @@ public class Discount {
 
     public void setCause(String cause) {
         this.cause = cause;
+    }
+
+    public Money getMoney() {
+        return money;
+    }
+
+    public void setMoney(Money money) {
+        this.money = money;
     }
 
     @Override public boolean equals(Object o) {
