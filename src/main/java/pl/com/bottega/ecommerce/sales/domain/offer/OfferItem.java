@@ -21,21 +21,20 @@ public class OfferItem {
 
     private Discount discount;
 
-    private Money money;
+    private Money totalCost;
 
     private int quantity;
 
-    private BigDecimal totalCost;
+    private BigDecimal cost;
 
-    public OfferItem(String productId, BigDecimal productPrice, String productName, Date productSnapshotDate,
-            String productType, int quantity) {
+    public OfferItem(String productId, BigDecimal productPrice, String productName, Date productSnapshotDate, String productType, int quantity) {
         this(productId, productPrice, productName, productSnapshotDate, productType, quantity, null, null);
     }
 
     public OfferItem(String id, String name, Date snapshotDate, String type, String cause, Money money1, int quantity) {
         this.product = new Product(id, name, snapshotDate, type, money1);
         this.discount = new Discount(cause, money1);
-        this.money = new Money(money.getValue(), money.getCurrency());
+        this.totalCost = new Money(totalCost.getValue(), totalCost.getCurrency());
         this.quantity = quantity;
 
         BigDecimal discountValue = new BigDecimal(0);
@@ -43,7 +42,7 @@ public class OfferItem {
             discountValue = discountValue.subtract(discount.getMoney().getValue());
         }
 
-        this.totalCost = product.getMoney().getValue().multiply(new BigDecimal(quantity)).subtract(discountValue);
+        this.cost = product.getMoney().getValue().multiply(new BigDecimal(quantity)).subtract(discountValue);
     }
 
     public int getQuantity() {
@@ -56,7 +55,7 @@ public class OfferItem {
         int result = 1;
         result = prime * result + (discount.getMoney() == null ? 0 : discount.getMoney().hashCode());
         result = prime * result + quantity;
-        result = prime * result + (money.getValue() == null ? 0 : money.getValue().hashCode());
+        result = prime * result + (totalCost.getValue() == null ? 0 : totalCost.getValue().hashCode());
         return result;
     }
 
@@ -131,12 +130,12 @@ public class OfferItem {
 
         BigDecimal max;
         BigDecimal min;
-        if (totalCost.compareTo(other.totalCost) > 0) {
-            max = totalCost;
-            min = other.totalCost;
+        if (cost.compareTo(other.cost) > 0) {
+            max = cost;
+            min = other.cost;
         } else {
-            max = other.totalCost;
-            min = totalCost;
+            max = other.cost;
+            min = cost;
         }
 
         BigDecimal difference = max.subtract(min);

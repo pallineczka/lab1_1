@@ -6,7 +6,7 @@ import java.util.Objects;
 
 public class Product {
 
-    private Money money;
+    private Money price;
 
     private String id;
 
@@ -21,15 +21,15 @@ public class Product {
         this.name = name;
         this.snapshotDate = snapshotDate;
         this.type = type;
-        this.money = new Money(Money.getValue(), Money.getCurrency());
+        this.price = new Money(price.getValue(), price.getCurrency());
     }
 
     public Money getMoney() {
-        return money;
+        return price;
     }
 
     public void setMoney(Money money) {
-        this.money = money;
+        this.price = money;
     }
 
     public String getId() {
@@ -70,7 +70,7 @@ public class Product {
         if (o == null || getClass() != o.getClass())
             return false;
         Product product = (Product) o;
-        return Objects.equals(money, product.money)
+        return Objects.equals(price, product.price)
                && Objects.equals(id, product.id)
                && Objects.equals(name, product.name)
                && Objects.equals(snapshotDate, product.snapshotDate)
@@ -78,6 +78,6 @@ public class Product {
     }
 
     @Override public int hashCode() {
-        return Objects.hash(money, id, name, snapshotDate, type);
+        return Objects.hash(price, id, name, snapshotDate, type);
     }
 }

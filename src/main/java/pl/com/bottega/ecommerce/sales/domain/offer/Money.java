@@ -6,16 +6,16 @@ import java.util.Objects;
 
 public class Money {
 
-    private static String currency;
+    private String currency;
 
-    private static BigDecimal value;
+    private BigDecimal value;
 
     public Money(BigDecimal value, String currency) {
         this.value = value;
         this.currency = currency;
     }
 
-    public static String getCurrency() {
+    public String getCurrency() {
         return currency;
     }
 
@@ -23,7 +23,7 @@ public class Money {
         this.currency = currency;
     }
 
-    public static BigDecimal getValue() {
+    public BigDecimal getValue() {
         return value;
     }
 
